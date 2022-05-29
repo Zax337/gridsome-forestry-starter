@@ -1,25 +1,22 @@
 <template>
-    <header class="header" :class="{sticky: $route.path === '/' || $route.path.includes('/projects/')}">
-        <div class="container">
-            <div class="left">
-                <g-link :to="{ name: 'home' }" class="home-link">
-                    <img 
-                        src="../../static/logo.svg"
-                        :alt="settings.site_name" 
-                        class="logo"
-                    />
-                </g-link>
-            </div>
-            <nav class="nav right">
-                <g-link class="nav__link" to="/journal">Journal</g-link>
-                <g-link class="nav__link" to="/contact">Say Hi!</g-link>
-            </nav>
-        </div>
-    </header>
+  <header class="header">
+    <g-link :to="{ name: 'home' }" class="home-link">
+      <Hero />
+    </g-link>
+    <div class="nav-container">
+      <g-link class="nav__link" to="/journal">Journal</g-link>
+      <g-link class="nav__link" to="/contact">Say Hi!</g-link>
+    </div>
+  </header>
 </template>
 
 <script>
+import Hero from "@/components/Hero"
+
 export default {
+  components: {
+    Hero,
+  },
   data() {
     return {
         logo: require("../../static/logo.svg"),
@@ -31,21 +28,14 @@ export default {
 
 <style scoped>
 .header {
-    position: relative;
-    height: 6rem;
-    z-index: 10;
 }
-.header.sticky {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-}
-.header > .container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 100%;
+
+.header > .nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 50%;
+  height: 100%;
 }
 .home-link {
     text-decoration: none;
