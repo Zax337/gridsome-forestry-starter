@@ -4,6 +4,13 @@ auto_deploy: false
 admin_path: "/static/admin"
 webhook_url: 
 sections:
+- type: directory
+  path: beers
+  label: Beers
+  create: all
+  match: "**/*.md"
+  templates:
+  - beer
 - type: document
   path: home/history.md
   label: Index
